@@ -37,18 +37,20 @@ func (suite *AutomationTestSuite) SetupSuite() {
 	)
 
 	if err := suite.Driver.Start(); err != nil {
-		suite.FailNow(err.Error())
+		suite.Require().NoError(err)
 	}
 
 	page, err := suite.Driver.NewPage(agouti.Browser("chrome"))
 	if err != nil {
-		suite.FailNow(err.Error())
+		suite.Require().NoError(err)
 	}
 
 	suite.page = page
 
+	suite.page.SetImplicitWait(15000)
+
 	if err := page.Navigate(os.Getenv("PAYPAL_URL")); err != nil {
-		suite.FailNow(err.Error())
+		suite.Require().NoError(err)
 	}
 
 }
@@ -60,6 +62,10 @@ func TestSuite(t *testing.T) {
 // private
 
 func (suite *AutomationTestSuite) LoginToAccount() {
+	if err := suite.page.Find("#acceptAllButton").Click(); err != nil {
+		suite.Require().NoError(err)
+	}
+
 	if err := suite.page.Find("#ul-btn").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
