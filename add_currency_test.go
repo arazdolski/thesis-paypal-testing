@@ -22,6 +22,4 @@ func (suite *AutomationTestSuite) TestAddCurrency() {
 	if err := suite.page.Find("#mainModal > div > div > div > div > form > div > div > div > button").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
-
-	suite.page.CloseWindow()
 }
