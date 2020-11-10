@@ -9,7 +9,7 @@ func (suite *AutomationTestSuite) TestMobilePayment() {
 		suite.Require().NoError(err)
 	}
 
-	if err := suite.page.Find("input[name='autocomplete-input']").Fill("+15417543010"); err != nil {
+	if err := suite.page.Find("input[name='autocomplete-input']").Fill("+12345678901"); err != nil {
 		suite.Require().NoError(err)
 	}
 
