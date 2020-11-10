@@ -35,7 +35,7 @@ func (suite *AutomationTestSuite) TestMobilePayment() {
 		suite.Require().NoError(err)
 	}
 
-	time.Sleep(time.Second * 5)
+	time.Sleep(time.Second * 15)
 
 	if err := suite.page.Find("#react-transfer-container > div > div > form > button.css-1mggxor.vx_btn").Click(); err != nil {
 		suite.Require().NoError(err)
