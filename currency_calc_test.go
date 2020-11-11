@@ -12,11 +12,7 @@ func (suite *AutomationTestSuite) TestCurrencyCalc() {
 	convertFrom := 1.00
 
 	// Act
-	suite.loginToAccount()
-
-	if err := suite.page.Find("#header-wallet").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.GoToWallet()
 
 	if err := suite.page.Find("#contents > main > section > div > div > div.currency-links > a.balanceDetails-currencyCalculator").Click(); err != nil {
 		suite.Require().NoError(err)

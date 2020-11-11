@@ -3,11 +3,7 @@ package automation
 import "time"
 
 func (suite *AutomationTestSuite) TestMobilePayment() {
-	suite.loginToAccount()
-
-	if err := suite.page.Find("#header-transfer").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.GoToTransfer()
 
 	if err := suite.page.Find("input[name='autocomplete-input']").Fill("+12345678901"); err != nil {
 		suite.Require().NoError(err)

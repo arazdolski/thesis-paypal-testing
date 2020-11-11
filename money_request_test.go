@@ -3,11 +3,7 @@ package automation
 import "time"
 
 func (suite *AutomationTestSuite) TestMoneyRequest() {
-	suite.loginToAccount()
-
-	if err := suite.page.Find("#header-transfer").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.GoToTransfer()
 
 	if err := suite.page.FindByXPath("/html/body/div[3]/div[2]/section/div[1]/div/div/div/div[1]/a[2]").Click(); err != nil {
 		suite.Require().NoError(err)

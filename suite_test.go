@@ -3,7 +3,6 @@ package automation
 import (
 	"os"
 	"testing"
-	"time"
 
 	"github.com/subosito/gotenv"
 
@@ -20,7 +19,6 @@ type AutomationTestSuite struct {
 }
 
 func (suite *AutomationTestSuite) SetupSuite() {
-
 	gotenv.Load()
 
 	suite.Driver = agouti.ChromeDriver()
@@ -41,7 +39,6 @@ func (suite *AutomationTestSuite) SetupSuite() {
 	if err := page.Navigate(os.Getenv("PAYPAL_URL")); err != nil {
 		suite.Require().NoError(err)
 	}
-
 }
 
 func (suite *AutomationTestSuite) TearDownTest() {
@@ -50,34 +47,4 @@ func (suite *AutomationTestSuite) TearDownTest() {
 
 func TestSuite(t *testing.T) {
 	suite.Run(t, new(AutomationTestSuite))
-}
-
-// private
-
-func (suite *AutomationTestSuite) loginToAccount() {
-	if err := suite.page.Find("#acceptAllButton").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
-
-	if err := suite.page.Find("#ul-btn").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
-
-	if err := suite.page.Find("input[name='login_email']").Fill(os.Getenv("PAYPAL_USER_EMAIL")); err != nil {
-		suite.Require().NoError(err)
-	}
-
-	if err := suite.page.Find("#btnNext").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
-
-	time.Sleep(time.Second)
-
-	if err := suite.page.Find("input[name='login_password']").Fill(os.Getenv("PAYPAL_USER_PASSWORD")); err != nil {
-		suite.Require().NoError(err)
-	}
-
-	if err := suite.page.Find("#btnLogin").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
 }

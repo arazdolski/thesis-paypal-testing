@@ -5,7 +5,7 @@ import (
 )
 
 func (suite *AutomationTestSuite) TestAddCurrency() {
-	suite.loginToAccount()
+	suite.GoToWallet()
 
 	suite.addCurrency()
 }
@@ -13,10 +13,6 @@ func (suite *AutomationTestSuite) TestAddCurrency() {
 // private
 
 func (suite *AutomationTestSuite) addCurrency() {
-	if err := suite.page.Find("#header-wallet").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
-
 	if err := suite.page.Find("#contents > main > section > div > div > div.currency-links > a.balanceDetails-manageCurrencies.test_mcm-addCurrency").Click(); err != nil {
 		suite.Require().NoError(err)
 	}

@@ -3,11 +3,7 @@ package automation
 import "time"
 
 func (suite *AutomationTestSuite) TestRemoveBank() {
-	suite.loginToAccount()
-
-	if err := suite.page.Find("#header-wallet").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.GoToWallet()
 
 	bank, err := suite.page.Find("#contents > main > div > section.fiListGroup_testTreatment.nemo_fiListGroup > ul > li:nth-child(2) > a > span > span:nth-child(3) > span.fiListItem-identifier").Text()
 	if err != nil {

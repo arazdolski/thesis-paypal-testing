@@ -3,11 +3,7 @@ package automation
 import "time"
 
 func (suite *AutomationTestSuite) TestAddBank() {
-	suite.loginToAccount()
-
-	if err := suite.page.Find("#header-wallet").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.GoToWallet()
 
 	suite.addBank()
 }

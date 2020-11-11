@@ -5,11 +5,7 @@ import (
 )
 
 func (suite *AutomationTestSuite) TestRemoveCurrency() {
-	suite.loginToAccount()
-
-	if err := suite.page.Find("#header-wallet").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.GoToWallet()
 
 	currency, err := suite.page.Find("#contents > main > section > div > div > ul > li:nth-child(2) > div > span.flex-item.multiCurrency-label_left > span.multiCurrency-label_left.multiCurrency-label_alignMiddle").Text()
 	if err != nil {
