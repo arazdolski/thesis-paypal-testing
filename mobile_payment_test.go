@@ -3,7 +3,7 @@ package automation
 import "time"
 
 func (suite *AutomationTestSuite) TestMobilePayment() {
-	suite.LoginToAccount()
+	suite.loginToAccount()
 
 	if err := suite.page.Find("#header-transfer").Click(); err != nil {
 		suite.Require().NoError(err)

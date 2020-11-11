@@ -1,7 +1,7 @@
 package automation
 
-func (suite *AutomationTestSuite) TestPayPalLogin(){
-	suite.LoginToAccount()
+func (suite *AutomationTestSuite) TestPayPalLogin() {
+	suite.loginToAccount()
 
 	suite.page.CloseWindow()
 

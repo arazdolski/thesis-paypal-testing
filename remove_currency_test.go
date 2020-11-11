@@ -1,14 +1,33 @@
 package automation
 
-import "time"
+import (
+	"time"
+)
 
 func (suite *AutomationTestSuite) TestRemoveCurrency() {
-	suite.TestAddCurrency()
+	suite.loginToAccount()
 
-	if err := suite.page.Find("#mainModal > div > div > div > div > a").Click(); err != nil {
+	if err := suite.page.Find("#header-wallet").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
 
+	currency, err := suite.page.Find("#contents > main > section > div > div > ul > li:nth-child(2) > div > span.flex-item.multiCurrency-label_left > span.multiCurrency-label_left.multiCurrency-label_alignMiddle").Text()
+	if err != nil {
+		suite.Require().NoError(err)
+	}
+
+	if currency != "AUD" {
+		suite.addCurrency()
+		suite.removeCurrency()
+
+	} else {
+		suite.removeCurrency()
+	}
+}
+
+// private
+
+func (suite *AutomationTestSuite) removeCurrency() {
 	if err := suite.page.Find("#contents > main > section > div > div > ul > li:nth-child(2) > div > div > div > button > span").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
@@ -23,5 +42,7 @@ func (suite *AutomationTestSuite) TestRemoveCurrency() {
 		suite.Require().NoError(err)
 	}
 
-	suite.page.CloseWindow()
+	if err := suite.page.Find("#mainModal > div > div > div > div > a").Click(); err != nil {
+		suite.Require().NoError(err)
+	}
 }

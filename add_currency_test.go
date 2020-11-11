@@ -1,10 +1,18 @@
 package automation
 
-import "time"
+import (
+	"time"
+)
 
 func (suite *AutomationTestSuite) TestAddCurrency() {
-	suite.LoginToAccount()
+	suite.loginToAccount()
 
+	suite.addCurrency()
+}
+
+// private
+
+func (suite *AutomationTestSuite) addCurrency() {
 	if err := suite.page.Find("#header-wallet").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
@@ -20,6 +28,10 @@ func (suite *AutomationTestSuite) TestAddCurrency() {
 	}
 
 	if err := suite.page.Find("#mainModal > div > div > div > div > form > div > div > div > button").Click(); err != nil {
+		suite.Require().NoError(err)
+	}
+
+	if err := suite.page.Find("#mainModal > div > div > div > div > a").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
 }

@@ -44,13 +44,17 @@ func (suite *AutomationTestSuite) SetupSuite() {
 
 }
 
+func (suite *AutomationTestSuite) TearDownTest() {
+	suite.page.CloseWindow()
+}
+
 func TestSuite(t *testing.T) {
 	suite.Run(t, new(AutomationTestSuite))
 }
 
 // private
 
-func (suite *AutomationTestSuite) LoginToAccount() {
+func (suite *AutomationTestSuite) loginToAccount() {
 	if err := suite.page.Find("#acceptAllButton").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
@@ -58,7 +62,7 @@ func (suite *AutomationTestSuite) LoginToAccount() {
 	if err := suite.page.Find("#ul-btn").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
-	
+
 	if err := suite.page.Find("input[name='login_email']").Fill(os.Getenv("PAYPAL_USER_EMAIL")); err != nil {
 		suite.Require().NoError(err)
 	}
