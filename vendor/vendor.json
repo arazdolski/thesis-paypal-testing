@@ -1,0 +1,91 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "CSPbwbyzqA6sfORicn4HFtIhF/c=",
+			"path": "github.com/davecgh/go-spew/spew",
+			"revision": "d8f796af33cc11cb798c1aaeb27a4ebc5099927d",
+			"revisionTime": "2018-08-30T19:11:22Z"
+		},
+		{
+			"checksumSHA1": "fYvGaesKxIVDuY4TjcgEMvGHTdQ=",
+			"path": "github.com/nouney/randomstring",
+			"revision": "1374daa59f018470914a4f6f03a326006c281e2b",
+			"revisionTime": "2018-03-30T20:56:16Z"
+		},
+		{
+			"checksumSHA1": "LuFv4/jlrmFNnDb/5SCSEPAM9vU=",
+			"path": "github.com/pmezard/go-difflib/difflib",
+			"revision": "5d4384ee4fb2527b0a1256a821ebfc92f91efefc",
+			"revisionTime": "2018-12-26T10:54:42Z"
+		},
+		{
+			"checksumSHA1": "X7xRe/wxJx/TrhjrH3KZcjroYu0=",
+			"path": "github.com/sclevine/agouti",
+			"revision": "00c1187c74ad5c1611ce7c73e37ac69e3552dd58",
+			"revisionTime": "2019-06-13T05:12:29Z"
+		},
+		{
+			"checksumSHA1": "cFUB0hp6YXLZroq9ICfO9zHox64=",
+			"path": "github.com/sclevine/agouti/api",
+			"revision": "00c1187c74ad5c1611ce7c73e37ac69e3552dd58",
+			"revisionTime": "2019-06-13T05:12:29Z"
+		},
+		{
+			"checksumSHA1": "vvFROB58AjYKFZUqNUAEyZ7vkxM=",
+			"path": "github.com/sclevine/agouti/api/internal/bus",
+			"revision": "00c1187c74ad5c1611ce7c73e37ac69e3552dd58",
+			"revisionTime": "2019-06-13T05:12:29Z"
+		},
+		{
+			"checksumSHA1": "Dna4S6LN0WFdng4EeLyPKO8+4qk=",
+			"path": "github.com/sclevine/agouti/api/internal/service",
+			"revision": "00c1187c74ad5c1611ce7c73e37ac69e3552dd58",
+			"revisionTime": "2019-06-13T05:12:29Z"
+		},
+		{
+			"checksumSHA1": "Ac+sqfWJvIqAoFnDzZRH8HP/1gg=",
+			"path": "github.com/sclevine/agouti/internal/element",
+			"revision": "00c1187c74ad5c1611ce7c73e37ac69e3552dd58",
+			"revisionTime": "2019-06-13T05:12:29Z"
+		},
+		{
+			"checksumSHA1": "rsdZ0GsD51gqfRPf3NFox3xw8eM=",
+			"path": "github.com/sclevine/agouti/internal/target",
+			"revision": "00c1187c74ad5c1611ce7c73e37ac69e3552dd58",
+			"revisionTime": "2019-06-13T05:12:29Z"
+		},
+		{
+			"checksumSHA1": "6LxFYLH5Iq2kjiWJh4xHFeBRfko=",
+			"path": "github.com/stretchr/testify/assert",
+			"revision": "92707c0b2d501c60de82176c4aa1cf880abac720",
+			"revisionTime": "2020-10-17T08:25:27Z"
+		},
+		{
+			"checksumSHA1": "yYoKMkETqa/Vho1S/Oy20A2zF4Q=",
+			"path": "github.com/stretchr/testify/require",
+			"revision": "92707c0b2d501c60de82176c4aa1cf880abac720",
+			"revisionTime": "2020-10-17T08:25:27Z"
+		},
+		{
+			"checksumSHA1": "MgAJ3HLi1OgDJ90rhj8bwdxfUwc=",
+			"path": "github.com/stretchr/testify/suite",
+			"revision": "92707c0b2d501c60de82176c4aa1cf880abac720",
+			"revisionTime": "2020-10-17T08:25:27Z"
+		},
+		{
+			"checksumSHA1": "g+CE3DkIsVrWNX2sZgZDqg+045U=",
+			"path": "github.com/subosito/gotenv",
+			"revision": "81e80d2d867a44e9961d23d376cf2c4955e700ca",
+			"revisionTime": "2020-08-22T01:15:49Z"
+		},
+		{
+			"checksumSHA1": "c2xmdlLwOBhvjCQ8St/EO+PTmYI=",
+			"path": "gopkg.in/yaml.v3",
+			"revision": "eeeca48fe7764f320e4870d231902bf9c1be2c08",
+			"revisionTime": "2020-06-15T11:34:13Z"
+		}
+	],
+	"rootPath": "github.com/deusact/thesis-paypal-automation"
+}
