@@ -1,6 +1,7 @@
 package automation
 
 import (
+	"fmt"
 	"os"
 	"testing"
 
@@ -20,12 +21,13 @@ type AutomationTestSuite struct {
 
 func (suite *AutomationTestSuite) SetupSuite() {
 	gotenv.Load()
+	fmt.Println(os.Getenv("PAYPAL_URL"))
 
 	suite.Driver = agouti.ChromeDriver()
 
-	if err := suite.Driver.Start(); err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.Require().NoError(
+		suite.Driver.Start(),
+	)
 
 	page, err := suite.Driver.NewPage(agouti.Browser("chrome"))
 	if err != nil {
@@ -39,6 +41,7 @@ func (suite *AutomationTestSuite) SetupSuite() {
 	if err := page.Navigate(os.Getenv("PAYPAL_URL")); err != nil {
 		suite.Require().NoError(err)
 	}
+
 }
 
 func (suite *AutomationTestSuite) TearDownTest() {
