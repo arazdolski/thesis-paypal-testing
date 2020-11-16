@@ -1,7 +1,6 @@
 package automation
 
 import (
-	"fmt"
 	"os"
 	"testing"
 
@@ -21,7 +20,6 @@ type AutomationTestSuite struct {
 
 func (suite *AutomationTestSuite) SetupSuite() {
 	gotenv.Load()
-	fmt.Println(os.Getenv("PAYPAL_URL"))
 
 	suite.Driver = agouti.ChromeDriver()
 
