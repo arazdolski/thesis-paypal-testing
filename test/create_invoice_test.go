@@ -36,6 +36,4 @@ func (suite *AutomationTestSuite) TestCreateInvoice() {
 	}
 
 	//We've sent your invoice {InvoiceNum} appear
-
-	suite.page.CloseWindow()
 }

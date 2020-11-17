@@ -36,6 +36,4 @@ func (suite *AutomationTestSuite) TestMobilePayment() {
 	if err := suite.page.Find("#react-transfer-container > div > div > form > button.css-1mggxor.vx_btn").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
-
-	suite.page.CloseWindow()
 }

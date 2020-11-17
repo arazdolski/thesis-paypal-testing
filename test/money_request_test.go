@@ -30,6 +30,4 @@ func (suite *AutomationTestSuite) TestMoneyRequest() {
 	if err := suite.page.Find("#react-transfer-container > div > div > div > form > div.preview-buttons > button").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
-
-	suite.page.CloseWindow()
 }

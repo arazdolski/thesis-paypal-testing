@@ -1,6 +1,7 @@
 package automation
 
 import (
+	"fmt"
 	"os"
 	"testing"
 
@@ -35,14 +36,20 @@ func (suite *AutomationTestSuite) SetupSuite() {
 	suite.page = page
 
 	suite.page.SetImplicitWait(15000)
+}
 
-	if err := page.Navigate(os.Getenv("PAYPAL_URL")); err != nil {
+func (suite *AutomationTestSuite) SetupTest() {
+	if err := suite.page.Navigate(os.Getenv("PAYPAL_URL")); err != nil {
 		suite.Require().NoError(err)
 	}
 
+	text, err := suite.page.Find("#header-logout").Text()
+	if err != nil && text != "Log Out" {
+		suite.LoginToAccount()
+	}
 }
 
-func (suite *AutomationTestSuite) TearDownTest() {
+func (suite *AutomationTestSuite) TearDownSuite() {
 	suite.page.CloseWindow()
 }
 
