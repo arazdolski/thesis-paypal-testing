@@ -5,6 +5,13 @@ import "time"
 func (suite *AutomationTestSuite) TestAddAddress() {
 	suite.GoToSettings()
 
+	suite.addAddress()
+}
+
+// private
+
+func (suite *AutomationTestSuite) addAddress() {
+	
 	if err := suite.page.Find("#accountTab > div > div.col-md-6.section.top.profile-panel > div.row.vx_panel.vx_panel-address.panel-overflow > a").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
@@ -31,4 +38,7 @@ func (suite *AutomationTestSuite) TestAddAddress() {
 
 	time.Sleep(time.Second * 10)
 
+	if err := suite.page.Find("#overpanel > div > div > div.overpanel-content > div.overpanel-body > div > input").Click(); err != nil {
+		suite.Require().NoError(err)
+	}
 }
