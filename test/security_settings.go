@@ -1,17 +1,9 @@
 package automation
 
-import "time"
-
 func (suite *AutomationTestSuite) TestTurnOnInterestBasedMarketingInOtherAccounts() {
 	suite.GoToSettings()
 
-	if err := suite.page.Find("#securityLink").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
-
-	if err := suite.page.Find("#securityTab > div > ul > li.otherPersonalization > div > div.col-xs-2.modify > span > a").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.GoToSecurity()
 
 	if suite.checkSettingIsOn() == true {
 		return
@@ -25,13 +17,7 @@ func (suite *AutomationTestSuite) TestTurnOnInterestBasedMarketingInOtherAccount
 func (suite *AutomationTestSuite) TestTurnOffInterestBasedMarketingInOtherAccounts() {
 	suite.GoToSettings()
 
-	if err := suite.page.Find("#securityLink").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
-
-	if err := suite.page.Find("#securityTab > div > ul > li.otherPersonalization > div > div.col-xs-2.modify > span > a").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.GoToSecurity()
 
 	if suite.checkSettingIsOn() == false {
 		return
