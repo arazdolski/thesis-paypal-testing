@@ -22,3 +22,14 @@ func (suite *AutomationTestSuite) checkHTMLContains(str string) bool {
 
 	return strings.Contains(html, str)
 }
+
+func (suite *AutomationTestSuite) checkSettingIsOn() bool {
+	setting, err := suite.page.Find("#overpanel > div > div > div.overpanel-content > div.overpanel-body > form > div.personalizationButton > input").Text()
+	suite.Require().NoError(err)
+
+	if setting == "Turn It Off" {
+		return false
+	} else {
+		return true
+	}
+}
