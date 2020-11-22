@@ -1,6 +1,8 @@
 package automation
 
 import (
+	"fmt"
+	"strconv"
 	"strings"
 	"time"
 
@@ -36,4 +38,13 @@ func (suite *AutomationTestSuite) checkSettingIsOn() bool {
 
 func (suite *AutomationTestSuite) toCurrency(currency string) string {
 	return "test_" + currency
+}
+
+func (suite *AutomationTestSuite) paypalAmount(amount string) string {
+	i, err := strconv.ParseFloat(amount, 64)
+	suite.Require().NoError(err)
+
+	j := strings.Replace(fmt.Sprintf("%.2f", i / 100), ".", ",", -1)
+
+	return j
 }

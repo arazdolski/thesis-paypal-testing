@@ -13,7 +13,7 @@ func (suite *AutomationTestSuite) TestAddEmailInCaseOfValidEmail() {
 	suite.addEmail(suite.email)
 
 	// Assert
-	suite.Equal(suite.checkHTMLContains(suite.email), true)
+	suite.Equal(true, suite.checkHTMLContains(suite.email))
 }
 
 func (suite *AutomationTestSuite) TestAddEmailInCaseOfInvalidEmail() {
@@ -25,7 +25,7 @@ func (suite *AutomationTestSuite) TestAddEmailInCaseOfInvalidEmail() {
 	suite.addEmail(suite.email)
 
 	// Assert
-	suite.Equal(suite.findEmailError(), true)
+	suite.Equal(true, suite.findEmailError())
 }
 
 // private

@@ -10,9 +10,10 @@ func (suite *AutomationTestSuite) TestAddCurrency() {
 
 	// Act
 	suite.GoToWallet()
-	suite.addCurrency()
+	suite.removeAndAddCurrency()
 
 	// Assert
+	suite.Equal(true, suite.checkHTMLContains(suite.currency))
 }
 
 // private
@@ -34,5 +35,16 @@ func (suite *AutomationTestSuite) addCurrency() {
 
 	if err := suite.page.Find("#mainModal > div > div > div > div > a").Click(); err != nil {
 		suite.Require().NoError(err)
+	}
+}
+
+func (suite *AutomationTestSuite) removeAndAddCurrency() {
+	currency := suite.checkHTMLContains(suite.currency)
+
+	if currency == true {
+		suite.removeCurrency()
+		suite.addCurrency()
+	} else {
+		suite.addCurrency()
 	}
 }

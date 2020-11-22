@@ -12,6 +12,7 @@ func (suite *AutomationTestSuite) TestRemoveBank() {
 	suite.removeAndCheckBank()
 
 	// Assert
+	suite.Equal(false, suite.checkHTMLContains(suite.bankName))
 }
 
 // private
@@ -36,15 +37,14 @@ func (suite *AutomationTestSuite) removeBank() {
 	if err := suite.page.Find("#mainModal > div > div > div > div > a").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
+
+	time.Sleep(time.Second * 2)
 }
 
 func (suite *AutomationTestSuite) removeAndCheckBank() {
-	bank, err := suite.page.Find("#contents > main > div > section.fiListGroup_testTreatment.nemo_fiListGroup > ul > li:nth-child(2) > a > span > span:nth-child(3) > span.fiListItem-identifier").Text()
-	if err != nil {
-		suite.Require().NoError(err)
-	}
+	bankName := suite.checkHTMLContains(suite.bankName)
 
-	if bank != "Rabobank Nederland" {
+	if bankName != true {
 		suite.addBank()
 		suite.removeBank()
 	} else {

@@ -10,8 +10,10 @@ func (suite *AutomationTestSuite) TestRemoveCurrency() {
 
 	// Act
 	suite.GoToWallet()
+	suite.addAndRemoveCurrency()
 
 	// Assert
+	suite.Equal(false, suite.checkHTMLContains(suite.currency))
 }
 
 // private
@@ -36,13 +38,10 @@ func (suite *AutomationTestSuite) removeCurrency() {
 	}
 }
 
-func (suite *AutomationTestSuite) removeAndCheckCurrency() {
-	currency, err := suite.page.Find("#contents > main > section > div > div > ul > li:nth-child(2) > div > span.flex-item.multiCurrency-label_left > span.multiCurrency-label_left.multiCurrency-label_alignMiddle").Text()
-	if err != nil {
-		suite.Require().NoError(err)
-	}
+func (suite *AutomationTestSuite) addAndRemoveCurrency() {
+	currency := suite.checkHTMLContains(suite.currency)
 
-	if currency != suite.currency {
+	if currency != true {
 		suite.addCurrency()
 		suite.removeCurrency()
 

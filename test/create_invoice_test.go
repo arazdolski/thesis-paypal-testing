@@ -7,13 +7,14 @@ func (suite *AutomationTestSuite) TestCreateInvoice() {
 	suite.email = "test@test.com"
 	suite.item = "Books"
 	suite.itemPrice = "100"
+	successMessage := "We've sent your invoice"
 
 	// Act
 	suite.GoToTransfer()
 	suite.createInvoice()
 
 	// Assert
-	//We've sent your invoice {InvoiceNum} appear
+	suite.Equal(true, suite.checkHTMLContains(successMessage))
 }
 
 // private

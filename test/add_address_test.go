@@ -4,9 +4,9 @@ import "time"
 
 func (suite *AutomationTestSuite) TestAddAddress() {
 	// Arrange
-	suite.address = "Address 1"
+	suite.address = "Address 123"
 	suite.city = "City"
-	suite.postalCode = "12321321"
+	suite.postalCode = "123213121"
 	suite.state = "City"
 
 	// Act
@@ -14,6 +14,7 @@ func (suite *AutomationTestSuite) TestAddAddress() {
 	suite.addAddress()
 
 	// Assert
+	suite.Equal(true, suite.checkHTMLContains(suite.address))
 }
 
 // private

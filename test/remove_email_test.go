@@ -8,11 +8,9 @@ func (suite *AutomationTestSuite) TestRemoveEmail() {
 	suite.GoToSettings()
 	suite.addEmail(suite.email)
 	suite.clickRemoveEmail()
-	suite.checkHTMLContains(suite.email)
 
 	// Assert
-	suite.Equal(suite.checkHTMLContains(suite.email), false)
-
+	suite.Equal(false, suite.checkHTMLContains(suite.email))
 }
 
 func (suite *AutomationTestSuite) clickRemoveEmail() {

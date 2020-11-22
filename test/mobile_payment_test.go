@@ -1,17 +1,21 @@
 package automation
 
-import "time"
+import (
+	"time"
+)
 
 func (suite *AutomationTestSuite) TestMobilePayment() {
 	// Arrange
 	suite.mobile = "+12345678901"
 	suite.amount = "1"
-	
+	successMessage := "You've sent " + suite.paypalAmount(suite.amount) + "&nbsp;EUR to " + suite.mobile
+
 	// Act
 	suite.GoToTransfer()
 	suite.mobilePayment()
 
 	// Assert
+	suite.Equal(true, suite.checkHTMLContains(successMessage))
 }
 
 // private
@@ -48,4 +52,6 @@ func (suite *AutomationTestSuite) mobilePayment() {
 	if err := suite.page.Find("#react-transfer-container > div > div > form > button.css-1mggxor.vx_btn").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
+
+	time.Sleep(time.Second * 2)
 }

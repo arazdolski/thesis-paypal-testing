@@ -1,16 +1,20 @@
 package automation
 
-import "time"
+import (
+	"time"
+)
 
 func (suite *AutomationTestSuite) TestAddBank() {
 	// Arrange
+	suite.bankName = "Rabobank Nederland"
 	suite.IBAN = "EE123456789012345678"
-	
+
 	// Act
 	suite.GoToWallet()
-	suite.addBank()
+	suite.addAndRemoveBank()
 
 	// Assert
+	suite.Equal(true, suite.checkHTMLContains(suite.bankName))
 }
 
 // private
@@ -40,5 +44,16 @@ func (suite *AutomationTestSuite) addBank() {
 
 	if err := suite.page.Find("#mainModal > div > div > a").Click(); err != nil {
 		suite.Require().NoError(err)
+	}
+}
+
+func (suite *AutomationTestSuite) addAndRemoveBank() {
+	bankName := suite.checkHTMLContains(suite.currency)
+
+	if bankName != true {
+		suite.addBank()
+	} else {
+		suite.removeBank()
+		suite.addBank()
 	}
 }

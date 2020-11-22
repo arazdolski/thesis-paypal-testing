@@ -8,12 +8,14 @@ func (suite *AutomationTestSuite) TestMoneyRequest() {
 	// Arrange
 	suite.mobile = "+12345678901"
 	suite.amount = "1"
+	successMessage := "You requested " + suite.paypalAmount(suite.amount) + "&nbsp;EUR from " + suite.mobile
 
 	// Act
 	suite.GoToTransfer()
-	suite.mobilePayment()
+	suite.moneyRequest()
 
 	// Assert
+	suite.Equal(true, suite.checkHTMLContains(successMessage))
 }
 
 // private
@@ -29,7 +31,7 @@ func (suite *AutomationTestSuite) moneyRequest() {
 
 	time.Sleep(time.Second * 6)
 
-	if err := suite.page.Find("#downshift-0-item-0 > div").Click(); err != nil {
+	if err := suite.page.Find("#downshift-1-item-0 > div").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
 

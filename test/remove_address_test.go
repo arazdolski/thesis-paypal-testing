@@ -10,6 +10,7 @@ func (suite *AutomationTestSuite) TestRemoveAddress() {
 	suite.city = "City"
 	suite.postalCode = "12321321"
 	suite.state = "City"
+	successMessage := "Your address has been removed."
 
 	// Act
 	suite.GoToSettings()
@@ -17,6 +18,7 @@ func (suite *AutomationTestSuite) TestRemoveAddress() {
 	suite.removeAddress()
 
 	// Assert
+	suite.Equal(true, suite.checkHTMLContains(successMessage))
 }
 
 func (suite *AutomationTestSuite) removeAddress() {

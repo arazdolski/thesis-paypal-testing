@@ -12,6 +12,8 @@ func (suite *AutomationTestSuite) TestChangeName() {
 	suite.changeName()
 
 	// Assert
+	suite.Equal(true, suite.checkHTMLContains(suite.firstname))
+	suite.Equal(true, suite.checkHTMLContains(suite.lastname))
 }
 
 // private
