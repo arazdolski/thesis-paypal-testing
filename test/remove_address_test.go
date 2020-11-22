@@ -1,12 +1,25 @@
 package automation
 
-import "time"
+import (
+	"time"
+)
 
 func (suite *AutomationTestSuite) TestRemoveAddress() {
+	// Arrange
+	suite.address = "Address 1"
+	suite.city = "City"
+	suite.postalCode = "12321321"
+	suite.state = "City"
+
+	// Act
 	suite.GoToSettings()
-
 	suite.addAddress()
+	suite.removeAddress()
 
+	// Assert
+}
+
+func (suite *AutomationTestSuite) removeAddress() {
 	if err := suite.page.Find("#overpanel > div > div > div.overpanel-content > div.overpanel-body > div > ul > li:nth-child(2) > p.manageAddresses-actions > a:nth-child(2)").Click(); err != nil {
 		suite.Require().NoError(err)
 	}

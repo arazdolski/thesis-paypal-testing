@@ -5,20 +5,13 @@ import (
 )
 
 func (suite *AutomationTestSuite) TestRemoveCurrency() {
+	// Arrange
+	suite.currency = suite.toCurrency("AUD")
+
+	// Act
 	suite.GoToWallet()
 
-	currency, err := suite.page.Find("#contents > main > section > div > div > ul > li:nth-child(2) > div > span.flex-item.multiCurrency-label_left > span.multiCurrency-label_left.multiCurrency-label_alignMiddle").Text()
-	if err != nil {
-		suite.Require().NoError(err)
-	}
-
-	if currency != "AUD" {
-		suite.addCurrency()
-		suite.removeCurrency()
-
-	} else {
-		suite.removeCurrency()
-	}
+	// Assert
 }
 
 // private
@@ -40,5 +33,20 @@ func (suite *AutomationTestSuite) removeCurrency() {
 
 	if err := suite.page.Find("#mainModal > div > div > div > div > a").Click(); err != nil {
 		suite.Require().NoError(err)
+	}
+}
+
+func (suite *AutomationTestSuite) removeAndCheckCurrency() {
+	currency, err := suite.page.Find("#contents > main > section > div > div > ul > li:nth-child(2) > div > span.flex-item.multiCurrency-label_left > span.multiCurrency-label_left.multiCurrency-label_alignMiddle").Text()
+	if err != nil {
+		suite.Require().NoError(err)
+	}
+
+	if currency != suite.currency {
+		suite.addCurrency()
+		suite.removeCurrency()
+
+	} else {
+		suite.removeCurrency()
 	}
 }

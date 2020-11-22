@@ -5,9 +5,14 @@ import (
 )
 
 func (suite *AutomationTestSuite) TestAddCurrency() {
-	suite.GoToWallet()
+	// Arrange
+	suite.currency = suite.toCurrency("AUD")
 
+	// Act
+	suite.GoToWallet()
 	suite.addCurrency()
+
+	// Assert
 }
 
 // private
@@ -19,7 +24,7 @@ func (suite *AutomationTestSuite) addCurrency() {
 
 	time.Sleep(time.Second * 2)
 
-	if err := suite.page.Find("#AUDRadioBtn").Click(); err != nil {
+	if err := suite.page.FindByClass(suite.currency).Click(); err != nil {
 		suite.Require().NoError(err)
 	}
 

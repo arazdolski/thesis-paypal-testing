@@ -13,7 +13,13 @@ func (suite *AutomationTestSuite) TestCurrencyCalc() {
 
 	// Act
 	suite.GoToWallet()
+	suite.currencyCalc()
 
+	// Assert
+	suite.Equal(convertFrom*(math.Round(suite.conversionRateFloat*100)/100), suite.convertToFloat)
+}
+
+func (suite *AutomationTestSuite) currencyCalc() {
 	if err := suite.page.Find("#contents > main > section > div > div > div.currency-links > a.balanceDetails-currencyCalculator").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
@@ -33,16 +39,13 @@ func (suite *AutomationTestSuite) TestCurrencyCalc() {
 	conversionRateDot := strings.Replace(conversionRate[8:13], ",", ".", -1)
 	convertToDot := strings.Replace(convertTo, ",", ".", -1)
 
-	conversionRateFloat, err := strconv.ParseFloat(conversionRateDot, 64)
+	suite.conversionRateFloat, err = strconv.ParseFloat(conversionRateDot, 64)
 	if err != nil {
 		suite.Require().NoError(err)
 	}
 
-	convertToFloat, err := strconv.ParseFloat(convertToDot, 64)
+	suite.convertToFloat, err = strconv.ParseFloat(convertToDot, 64)
 	if err != nil {
 		suite.Require().NoError(err)
 	}
-
-	// Assert
-	suite.Equal(convertFrom*(math.Round(conversionRateFloat*100)/100), convertToFloat)
 }

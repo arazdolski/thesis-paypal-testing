@@ -6,23 +6,23 @@ import (
 
 func (suite *AutomationTestSuite) TestAddEmailInCaseOfValidEmail() {
 	// Arrange
-	email := suite.randomString(10) + "@test.com"
+	suite.email = suite.randomString(10) + "@test.com"
 
 	// Act
 	suite.GoToSettings()
-	suite.addEmail(email)
+	suite.addEmail(suite.email)
 
 	// Assert
-	suite.Equal(suite.checkHTMLContains(email), true)
+	suite.Equal(suite.checkHTMLContains(suite.email), true)
 }
 
 func (suite *AutomationTestSuite) TestAddEmailInCaseOfInvalidEmail() {
 	// Arrange
-	email := "abcabc"
+	suite.email = "abcabc"
 
 	// Act
 	suite.GoToSettings()
-	suite.addEmail(email)
+	suite.addEmail(suite.email)
 
 	// Assert
 	suite.Equal(suite.findEmailError(), true)
@@ -35,9 +35,11 @@ func (suite *AutomationTestSuite) addEmail(email string) {
 		suite.Require().NoError(err)
 	}
 
-	if err := suite.page.Find("input[name='email']").Fill(email); err != nil {
+	if err := suite.page.Find("input[name='email']").Fill(suite.email); err != nil {
 		suite.Require().NoError(err)
 	}
+
+	time.Sleep(time.Second * 5)
 
 	if err := suite.page.Find("#overpanel > div > div > div.overpanel-content > div.overpanel-body > form > div.button > input").Click(); err != nil {
 		suite.Require().NoError(err)

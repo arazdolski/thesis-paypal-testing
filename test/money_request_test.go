@@ -1,15 +1,29 @@
 package automation
 
-import "time"
+import (
+	"time"
+)
 
 func (suite *AutomationTestSuite) TestMoneyRequest() {
-	suite.GoToTransfer()
+	// Arrange
+	suite.mobile = "+12345678901"
+	suite.amount = "1"
 
+	// Act
+	suite.GoToTransfer()
+	suite.mobilePayment()
+
+	// Assert
+}
+
+// private
+
+func (suite *AutomationTestSuite) moneyRequest() {
 	if err := suite.page.FindByXPath("/html/body/div[3]/div[2]/section/div[1]/div/div/div/div[1]/a[2]").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
 
-	if err := suite.page.Find("input[name='multi-autocomplete-input']").Fill("+12345678901"); err != nil {
+	if err := suite.page.Find("input[name='multi-autocomplete-input']").Fill(suite.mobile); err != nil {
 		suite.Require().NoError(err)
 	}
 
@@ -23,7 +37,7 @@ func (suite *AutomationTestSuite) TestMoneyRequest() {
 		suite.Require().NoError(err)
 	}
 
-	if err := suite.page.Find("#fn-amount").SendKeys("1"); err != nil {
+	if err := suite.page.Find("#fn-amount").SendKeys(suite.amount); err != nil {
 		suite.Require().NoError(err)
 	}
 

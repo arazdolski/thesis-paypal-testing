@@ -3,9 +3,17 @@ package automation
 import "time"
 
 func (suite *AutomationTestSuite) TestAddAddress() {
-	suite.GoToSettings()
+	// Arrange
+	suite.address = "Address 1"
+	suite.city = "City"
+	suite.postalCode = "12321321"
+	suite.state = "City"
 
+	// Act
+	suite.GoToSettings()
 	suite.addAddress()
+
+	// Assert
 }
 
 // private
@@ -16,19 +24,19 @@ func (suite *AutomationTestSuite) addAddress() {
 		suite.Require().NoError(err)
 	}
 
-	if err := suite.page.Find("input[name='line1']").Fill("Address 1"); err != nil {
+	if err := suite.page.Find("input[name='line1']").Fill(suite.address); err != nil {
 		suite.Require().NoError(err)
 	}
 
-	if err := suite.page.Find("input[name='city']").Fill("City"); err != nil {
+	if err := suite.page.Find("input[name='city']").Fill(suite.city); err != nil {
 		suite.Require().NoError(err)
 	}
 
-	if err := suite.page.Find("input[name='postalCode']").Fill("12321321"); err != nil {
+	if err := suite.page.Find("input[name='postalCode']").Fill(suite.postalCode); err != nil {
 		suite.Require().NoError(err)
 	}
 
-	if err := suite.page.Find("input[name='state']").Fill("City"); err != nil {
+	if err := suite.page.Find("input[name='state']").Fill(suite.state); err != nil {
 		suite.Require().NoError(err)
 	}
 

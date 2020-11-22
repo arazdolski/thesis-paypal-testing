@@ -16,6 +16,16 @@ type AutomationTestSuite struct {
 	page *agouti.Page
 
 	Driver *agouti.WebDriver
+
+	// Address
+	address, city, postalCode, state string
+
+	// Bank
+	IBAN, currency, bankName string
+	
+	// Data
+	email, firstname, lastname, item, itemPrice, mobile, amount string
+	conversionRateFloat, convertToFloat float64
 }
 
 func (suite *AutomationTestSuite) SetupSuite() {

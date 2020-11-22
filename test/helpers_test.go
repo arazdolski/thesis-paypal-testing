@@ -33,3 +33,7 @@ func (suite *AutomationTestSuite) checkSettingIsOn() bool {
 		return true
 	}
 }
+
+func (suite *AutomationTestSuite) toCurrency(currency string) string {
+	return "test_" + currency
+}

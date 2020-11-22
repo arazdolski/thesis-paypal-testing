@@ -4,12 +4,19 @@ import "time"
 
 func (suite *AutomationTestSuite) TestChangeName() {
 	// Arrange
-	firstname := "John"
-	lastname := "Doe"
+	suite.firstname = "John"
+	suite.lastname = "Doe"
 
 	// Act
 	suite.GoToSettings()
+	suite.changeName()
 
+	// Assert
+}
+
+// private
+
+func (suite *AutomationTestSuite) changeName() {
 	if err := suite.page.Find("#accountTab > div > div:nth-child(1) > div.row.vx_panel.vx_panel-profile > div:nth-child(2) > div.col-sm-8.col-md-9.profile-detailColumn.js_name > div.row.profileDetail-container > a").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
@@ -18,11 +25,11 @@ func (suite *AutomationTestSuite) TestChangeName() {
 		suite.Require().NoError(err)
 	}
 
-	if err := suite.page.Find("input[name='firstName']").Fill(firstname); err != nil {
+	if err := suite.page.Find("input[name='firstName']").Fill(suite.firstname); err != nil {
 		suite.Require().NoError(err)
 	}
 
-	if err := suite.page.Find("input[name='lastName']").Fill(lastname); err != nil {
+	if err := suite.page.Find("input[name='lastName']").Fill(suite.lastname); err != nil {
 		suite.Require().NoError(err)
 	}
 

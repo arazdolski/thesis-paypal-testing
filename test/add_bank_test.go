@@ -3,9 +3,14 @@ package automation
 import "time"
 
 func (suite *AutomationTestSuite) TestAddBank() {
+	// Arrange
+	suite.IBAN = "EE123456789012345678"
+	
+	// Act
 	suite.GoToWallet()
-
 	suite.addBank()
+
+	// Assert
 }
 
 // private
@@ -19,7 +24,7 @@ func (suite *AutomationTestSuite) addBank() {
 		suite.Require().NoError(err)
 	}
 
-	if err := suite.page.Find("input[name='accountNumber']").Fill("EE123456789012345678"); err != nil {
+	if err := suite.page.Find("input[name='accountNumber']").Fill(suite.IBAN); err != nil {
 		suite.Require().NoError(err)
 	}
 
