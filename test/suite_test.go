@@ -38,9 +38,7 @@ func (suite *AutomationTestSuite) SetupSuite() {
 	)
 
 	page, err := suite.Driver.NewPage(agouti.Browser("chrome"))
-	if err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.Require().NoError(err)
 
 	suite.page = page
 
@@ -48,9 +46,8 @@ func (suite *AutomationTestSuite) SetupSuite() {
 }
 
 func (suite *AutomationTestSuite) SetupTest() {
-	if err := suite.page.Navigate(os.Getenv("PAYPAL_URL")); err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.page.Navigate(os.Getenv("PAYPAL_URL"))
+	suite.Require().NoError(err)
 
 	text, err := suite.page.Find("#header-logout").Text()
 	if err != nil && text != "Log Out" {

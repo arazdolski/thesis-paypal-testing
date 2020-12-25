@@ -19,23 +19,19 @@ func (suite *AutomationTestSuite) TestRemoveCurrency() {
 // private
 
 func (suite *AutomationTestSuite) removeCurrency() {
-	if err := suite.page.Find("#contents > main > section > div > div > ul > li:nth-child(2) > div > div > div > button > span").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.page.Find("#contents > main > section > div > div > ul > li:nth-child(2) > div > div > div > button > span").Click()
+	suite.Require().NoError(err)
 
-	if err := suite.page.Find("#contents > main > section > div > div > ul > li:nth-child(2) > div > div > div > div > ul > li:nth-child(2) > a").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.page.Find("#contents > main > section > div > div > ul > li:nth-child(2) > div > div > div > div > ul > li:nth-child(2) > a").Click()
+	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 5)
 
-	if err := suite.page.Find("#mainModal > div > div > div > div > form > button").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.page.Find("#mainModal > div > div > div > div > form > button").Click()
+	suite.Require().NoError(err)
 
-	if err := suite.page.Find("#mainModal > div > div > div > div > a").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
+	suite.page.Find("#mainModal > div > div > div > div > a").Click()
+	suite.Require().NoError(err)
 }
 
 func (suite *AutomationTestSuite) addAndRemoveCurrency() {
