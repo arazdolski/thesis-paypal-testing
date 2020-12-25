@@ -6,9 +6,9 @@ import (
 )
 
 func (suite *AutomationTestSuite) LoginToAccount() {
-	if err := suite.page.Find("#acceptAllButton").Click(); err != nil {
-		suite.Require().NoError(err)
-	}
+	// if err := suite.page.Find("#acceptAllButton").Click(); err != nil {
+	// 	suite.Require().NoError(err)
+	// }
 
 	if err := suite.page.Find("#ul-btn").Click(); err != nil {
 		suite.Require().NoError(err)
@@ -34,21 +34,20 @@ func (suite *AutomationTestSuite) LoginToAccount() {
 }
 
 func (suite *AutomationTestSuite) GoToWallet() {
-
+	time.Sleep(time.Second)
 	if err := suite.page.Find("#header-wallet").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
 }
 
 func (suite *AutomationTestSuite) GoToSettings() {
-
 	if err := suite.page.Find("#header-settings").Click(); err != nil {
 		suite.Require().NoError(err)
 	}
 }
 
 func (suite *AutomationTestSuite) GoToTransfer() {
-
+	time.Sleep(time.Second)
 	if err := suite.page.Find("#header-transfer").Click(); err != nil {
 		suite.Require().NoError(err)
 	}

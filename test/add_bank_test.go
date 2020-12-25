@@ -48,7 +48,7 @@ func (suite *AutomationTestSuite) addBank() {
 }
 
 func (suite *AutomationTestSuite) addAndRemoveBank() {
-	bankName := suite.checkHTMLContains(suite.currency)
+	bankName := suite.checkHTMLContains(suite.bankName)
 
 	if bankName != true {
 		suite.addBank()
