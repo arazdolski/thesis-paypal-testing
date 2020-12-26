@@ -6,11 +6,10 @@ import (
 )
 
 func (suite *AutomationTestSuite) LoginToAccount() {
-	// err = suite.page.Find("#acceptAllButton").Click()
-	// 	suite.Require().NoError(err)
-	// }
+	err := suite.page.Find("#acceptAllButton").Click()
+		suite.Require().NoError(err)
 
-	err := suite.page.Find("#ul-btn").Click()
+	err = suite.page.Find("#ul-btn").Click()
 	suite.Require().NoError(err)
 
 	err = suite.page.Find("input[name='login_email']").Fill(os.Getenv("PAYPAL_USER_EMAIL"))

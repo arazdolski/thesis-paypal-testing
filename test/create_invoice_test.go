@@ -38,7 +38,7 @@ func (suite *AutomationTestSuite) createInvoice() {
 	err = suite.page.Find("#itemPrice_0").Fill(suite.itemPrice)
 	suite.Require().NoError(err)
 
-	time.Sleep(time.Second * 2)
+	time.Sleep(time.Second * 10)
 
 	err = suite.page.FindByXPath("/html/body/div[3]/div[2]/section/div/form[2]/div[13]/div/div/div/div/div[1]").Click()
 	suite.Require().NoError(err)
