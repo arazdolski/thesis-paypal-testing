@@ -20,7 +20,7 @@ func (suite *AutomationTestSuite) TestCurrencyCalc() {
 }
 
 func (suite *AutomationTestSuite) currencyCalc() {
-	suite.page.Find("#contents > main > section > div > div > div.currency-links > a.balanceDetails-currencyCalculator").Click()
+	err := suite.page.Find("#contents > main > section > div > div > div.currency-links > a.balanceDetails-currencyCalculator").Click()
 	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 5)

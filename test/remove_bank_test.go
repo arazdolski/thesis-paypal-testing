@@ -18,20 +18,20 @@ func (suite *AutomationTestSuite) TestRemoveBank() {
 // private
 
 func (suite *AutomationTestSuite) removeBank() {
-	suite.page.Find("#contents > main > div > section.fiListGroup_testTreatment.nemo_fiListGroup > ul > li:nth-child(2) > a > span > span:nth-child(3) > span.fiListItem-identifier").Click()
+	err := suite.page.Find("#contents > main > div > section.fiListGroup_testTreatment.nemo_fiListGroup > ul > li:nth-child(2) > a > span > span:nth-child(3) > span.fiListItem-identifier").Click()
 	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 2)
 
-	suite.page.Find("#contents > main > section > div > div > div.fiDetails-body > div.fiDetails-actionLinks > a").Click()
+	err = suite.page.Find("#contents > main > section > div > div > div.fiDetails-body > div.fiDetails-actionLinks > a").Click()
 	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 2)
 
-	suite.page.Find("#mainModal > div > div > div > div > button").Click()
+	err = suite.page.Find("#mainModal > div > div > div > div > button").Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("#mainModal > div > div > div > div > a").Click()
+	err = suite.page.Find("#mainModal > div > div > div > div > a").Click()
 	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 2)

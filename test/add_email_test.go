@@ -31,15 +31,15 @@ func (suite *AutomationTestSuite) TestAddEmailInCaseOfInvalidEmail() {
 // private
 
 func (suite *AutomationTestSuite) addEmail(email string) {
-	suite.page.Find("#accountTab > div > div.col-md-6.section.top.profile-panel > div.row.vx_panel.vx_panel-email.panel-overflow > a").Click()
+	err := suite.page.Find("#accountTab > div > div.col-md-6.section.top.profile-panel > div.row.vx_panel.vx_panel-email.panel-overflow > a").Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("input[name='email']").Fill(suite.email)
+	err = suite.page.Find("input[name='email']").Fill(suite.email)
 	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 5)
 
-	suite.page.Find("#overpanel > div > div > div.overpanel-content > div.overpanel-body > form > div.button > input").Click()
+	err = suite.page.Find("#overpanel > div > div > div.overpanel-content > div.overpanel-body > form > div.button > input").Click()
 	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 5)

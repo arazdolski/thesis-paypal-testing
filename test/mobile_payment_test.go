@@ -21,29 +21,29 @@ func (suite *AutomationTestSuite) TestMobilePayment() {
 // private
 
 func (suite *AutomationTestSuite) mobilePayment() {
-	suite.page.Find("input[name='autocomplete-input']").Fill(suite.mobile)
+	err := suite.page.Find("input[name='autocomplete-input']").Fill(suite.mobile)
 	suite.Require().NoError(err)
 
-	suite.page.Find("#downshift-0-item-0 > div").Click()
+	err = suite.page.Find("#downshift-0-item-0 > div").Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("#fn-amount").Click()
+	err = suite.page.Find("#fn-amount").Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("#fn-amount").SendKeys("1")
+	err = suite.page.Find("#fn-amount").SendKeys("1")
 	suite.Require().NoError(err)
 
-	suite.page.Find("#react-transfer-container > div > div > form > button.css-1mggxor.vx_btn").Click()
+	err = suite.page.Find("#react-transfer-container > div > div > form > button.css-1mggxor.vx_btn").Click()
 	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 2)
 
-	suite.page.Find("#personal").Click()
+	err = suite.page.Find("#personal").Click()
 	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 15)
 
-	suite.page.Find("#react-transfer-container > div > div > form > button.css-1mggxor.vx_btn").Click()
+	err = suite.page.Find("#react-transfer-container > div > div > form > button.css-1mggxor.vx_btn").Click()
 	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 2)

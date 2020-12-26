@@ -21,23 +21,23 @@ func (suite *AutomationTestSuite) TestMoneyRequest() {
 // private
 
 func (suite *AutomationTestSuite) moneyRequest() {
-	suite.page.FindByXPath("/html/body/div[3]/div[2]/section/div[1]/div/div/div/div[1]/a[2]").Click()
+	err := suite.page.FindByXPath("/html/body/div[3]/div[2]/section/div[1]/div/div/div/div[1]/a[2]").Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("input[name='multi-autocomplete-input']").Fill(suite.mobile)
+	err = suite.page.Find("input[name='multi-autocomplete-input']").Fill(suite.mobile)
 	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 6)
 
-	suite.page.Find("#downshift-1-item-0 > div").Click()
+	err = suite.page.Find("#downshift-1-item-0 > div").Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("#react-transfer-container > div > div > div > div.css-1s5wvjt > div > div.css-a3b40m.transferPage.row > form > div.css-xcma15 > div > span.recipient-next > button").Click()
+	err = suite.page.Find("#react-transfer-container > div > div > div > div.css-1s5wvjt > div > div.css-a3b40m.transferPage.row > form > div.css-xcma15 > div > span.recipient-next > button").Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("#fn-amount").SendKeys(suite.amount)
+	err = suite.page.Find("#fn-amount").SendKeys(suite.amount)
 	suite.Require().NoError(err)
 
-	suite.page.Find("#react-transfer-container > div > div > div > form > div.preview-buttons > button").Click()
+	err = suite.page.Find("#react-transfer-container > div > div > div > form > div.preview-buttons > button").Click()
 	suite.Require().NoError(err)
 }

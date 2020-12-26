@@ -19,18 +19,18 @@ func (suite *AutomationTestSuite) TestAddCurrency() {
 // private
 
 func (suite *AutomationTestSuite) addCurrency() {
-	suite.page.Find("#contents > main > section > div > div > div.currency-links > a.balanceDetails-manageCurrencies.test_mcm-addCurrency").Click()
+	err := suite.page.Find("#contents > main > section > div > div > div.currency-links > a.balanceDetails-manageCurrencies.test_mcm-addCurrency").Click()
 	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 2)
 
-	suite.page.FindByClass(suite.currency).Click()
+	err = suite.page.FindByClass(suite.currency).Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("#mainModal > div > div > div > div > form > div > div > div > button").Click()
+	err = suite.page.Find("#mainModal > div > div > div > div > form > div > div > div > button").Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("#mainModal > div > div > div > div > a").Click()
+	err = suite.page.Find("#mainModal > div > div > div > div > a").Click()
 	suite.Require().NoError(err)
 }
 

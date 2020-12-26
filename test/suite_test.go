@@ -46,7 +46,7 @@ func (suite *AutomationTestSuite) SetupSuite() {
 }
 
 func (suite *AutomationTestSuite) SetupTest() {
-	suite.page.Navigate(os.Getenv("PAYPAL_URL"))
+	err := suite.page.Navigate(os.Getenv("PAYPAL_URL"))
 	suite.Require().NoError(err)
 
 	text, err := suite.page.Find("#header-logout").Text()

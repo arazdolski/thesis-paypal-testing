@@ -31,9 +31,9 @@ func (suite *AutomationTestSuite) checkSettingIsOn() bool {
 
 	if setting == "Turn It Off" {
 		return false
-	} else {
-		return true
 	}
+	
+	return true
 }
 
 func (suite *AutomationTestSuite) toCurrency(currency string) string {

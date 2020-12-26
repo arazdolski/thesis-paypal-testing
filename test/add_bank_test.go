@@ -20,24 +20,24 @@ func (suite *AutomationTestSuite) TestAddBank() {
 // private
 
 func (suite *AutomationTestSuite) addBank() {
-	suite.page.Find("#contents > main > div > section.fiList-icon_container > div:nth-child(1) > a > span").Click()
+	err := suite.page.Find("#contents > main > div > section.fiList-icon_container > div:nth-child(1) > a > span").Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("#contents > main > div > section.fiList-icon_container > div:nth-child(1) > a > span").Click()
+	err = suite.page.Find("#contents > main > div > section.fiList-icon_container > div:nth-child(1) > a > span").Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("input[name='accountNumber']").Fill(suite.IBAN)
+	err = suite.page.Find("input[name='accountNumber']").Fill(suite.IBAN)
 	suite.Require().NoError(err)
 
-	suite.page.Find("#mainModal > div > div > div > form:nth-child(1) > button").Click()
+	err = suite.page.Find("#mainModal > div > div > div > form:nth-child(1) > button").Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("#mainModal > div > div > div > div.stickyButtonFooter-wrapper.vx_btn-group_stacked > div > div > form > button.btn.vx_btn.test_accept-mandate.mandate_lg-btn").Click()
+	err = suite.page.Find("#mainModal > div > div > div > div.stickyButtonFooter-wrapper.vx_btn-group_stacked > div > div > form > button.btn.vx_btn.test_accept-mandate.mandate_lg-btn").Click()
 	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 2)
 
-	suite.page.Find("#mainModal > div > div > a").Click()
+	err = suite.page.Find("#mainModal > div > div > a").Click()
 	suite.Require().NoError(err)
 }
 

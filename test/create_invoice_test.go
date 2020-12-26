@@ -20,26 +20,26 @@ func (suite *AutomationTestSuite) TestCreateInvoice() {
 // private
 
 func (suite *AutomationTestSuite) createInvoice() {
-	suite.page.FindByXPath("/html/body/div[3]/div[2]/section/div[1]/div/div/div/div[1]/a[4]").Click()
+	err := suite.page.FindByXPath("/html/body/div[3]/div[2]/section/div[1]/div/div/div/div[1]/a[4]").Click()
 	suite.Require().NoError(err)
 
-	suite.page.FindByXPath("/html/body/div[3]/div[2]/section/div[1]/div/div/div/div[2]/div/div/div/div[3]/a[2]").Click()
+	err = suite.page.FindByXPath("/html/body/div[3]/div[2]/section/div[1]/div/div/div/div[2]/div/div/div/div[3]/a[2]").Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("#createNewInvoice").Click()
+	err = suite.page.Find("#createNewInvoice").Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("#billtotokenfield-tokenfield").Fill(suite.email)
+	err = suite.page.Find("#billtotokenfield-tokenfield").Fill(suite.email)
 	suite.Require().NoError(err)
 
-	suite.page.Find("input[name='itemName']").Fill(suite.item)
+	err = suite.page.Find("input[name='itemName']").Fill(suite.item)
 	suite.Require().NoError(err)
 
-	suite.page.Find("#itemPrice_0").Fill(suite.itemPrice)
+	err = suite.page.Find("#itemPrice_0").Fill(suite.itemPrice)
 	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 2)
 
-	suite.page.FindByXPath("/html/body/div[3]/div[2]/section/div/form[2]/div[13]/div/div/div/div/div[1]").Click()
+	err = suite.page.FindByXPath("/html/body/div[3]/div[2]/section/div/form[2]/div[13]/div/div/div/div/div[1]").Click()
 	suite.Require().NoError(err)
 }

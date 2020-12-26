@@ -20,26 +20,26 @@ func (suite *AutomationTestSuite) TestAddAddress() {
 // private
 
 func (suite *AutomationTestSuite) addAddress() {
-	suite.page.Find("#accountTab > div > div.col-md-6.section.top.profile-panel > div.row.vx_panel.vx_panel-address.panel-overflow > a").Click()
+	err := suite.page.Find("#accountTab > div > div.col-md-6.section.top.profile-panel > div.row.vx_panel.vx_panel-address.panel-overflow > a").Click()
 	suite.Require().NoError(err)
 
-	suite.page.Find("input[name='line1']").Fill(suite.address)
+	err = suite.page.Find("input[name='line1']").Fill(suite.address)
 	suite.Require().NoError(err)
 
-	suite.page.Find("input[name='city']").Fill(suite.city)
+	err = suite.page.Find("input[name='city']").Fill(suite.city)
 	suite.Require().NoError(err)
 
-	suite.page.Find("input[name='postalCode']").Fill(suite.postalCode)
+	err = suite.page.Find("input[name='postalCode']").Fill(suite.postalCode)
 	suite.Require().NoError(err)
 
-	suite.page.Find("input[name='state']").Fill(suite.state)
+	err = suite.page.Find("input[name='state']").Fill(suite.state)
 	suite.Require().NoError(err)
 
-	suite.page.Find("#overpanel > div > div > div.overpanel-content > div.overpanel-body > form > div:nth-child(6) > input").Click()
+	err = suite.page.Find("#overpanel > div > div > div.overpanel-content > div.overpanel-body > form > div:nth-child(6) > input").Click()
 	suite.Require().NoError(err)
 
 	time.Sleep(time.Second * 10)
 
-	suite.page.Find("#overpanel > div > div > div.overpanel-content > div.overpanel-body > div > input").Click()
+	err = suite.page.Find("#overpanel > div > div > div.overpanel-content > div.overpanel-body > div > input").Click()
 	suite.Require().NoError(err)
 }
