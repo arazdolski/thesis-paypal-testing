@@ -42,7 +42,7 @@ func (suite *AutomationTestSuite) SetupSuite() {
 
 	suite.page = page
 
-	suite.page.SetImplicitWait(15000)
+	suite.page.SetImplicitWait(5000)
 }
 
 func (suite *AutomationTestSuite) SetupTest() {

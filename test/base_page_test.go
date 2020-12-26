@@ -7,7 +7,7 @@ import (
 
 func (suite *AutomationTestSuite) LoginToAccount() {
 	err := suite.page.Find("#acceptAllButton").Click()
-		suite.Require().NoError(err)
+	suite.Require().NoError(err)
 
 	err = suite.page.Find("#ul-btn").Click()
 	suite.Require().NoError(err)
