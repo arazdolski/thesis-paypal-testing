@@ -9,9 +9,9 @@ func (suite *AutomationTestSuite) TestTurnOnInterestBasedMarketingInOtherAccount
 	if suite.checkSettingIsOn() == true {
 		return
 	}
-	
+
 	err := suite.page.Find("#overpanel > div > div > div.overpanel-content > div.overpanel-body > form > div.personalizationButton > input").Click()
-		suite.Require().NoError(err)
+	suite.Require().NoError(err)
 }
 
 func (suite *AutomationTestSuite) TestTurnOffInterestBasedMarketingInOtherAccounts() {
@@ -25,7 +25,7 @@ func (suite *AutomationTestSuite) TestTurnOffInterestBasedMarketingInOtherAccoun
 	}
 
 	err := suite.page.Find("#overpanel > div > div > div.overpanel-content > div.overpanel-body > form > div.personalizationButton > input").Click()
-		suite.Require().NoError(err)
+	suite.Require().NoError(err)
 }
 
 func (suite *AutomationTestSuite) TestTurnOnInterestBasedMarketingOnPaypal() {
